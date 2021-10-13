@@ -25,7 +25,7 @@ setup(
     python_requires='>=3.5',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=['pyparsing'],
+    install_requires=['pyparsing', 'pytest'],
     entry_points={
         'console_scripts': [
             'explain_HGVS = laymansHGVS.laymansHGVS:cli'
