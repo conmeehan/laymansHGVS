@@ -19,8 +19,40 @@ python laymansHGVS.py --variant HGVSvariant
 
 """
 
+def interpret(variant):
+    # Create a grammer object to parse the variant into its sections
+    grammar = Grammar()
+    # Obtain the parsed variant as a dictionary
+    pd = grammar.parse(variant).asDict()
 
-def main():
+    if not pd:
+        # Parsing went wrong.
+        raise ValueError("Variant could not be parsed")
+
+
+    # Based on the reference type, process it either as genomic or protein
+    if pd['RefType'] == 'g' or pd['RefType'] == 'c':
+        mut_type = pd['RawVar']['MutationType']
+        acc = pd['RefSeqAcc']
+        loc = pd['RawVar']['StartLoc']['PtLoc'][0]['Main']
+        ref = pd['RawVar']['Arg1']
+        alt = pd['RawVar']['Arg2']
+
+        interpretation = f"This is a {mut_type} found in {acc} at position " \
+                         f"{loc} where the reference has a {ref} and the " \
+                         f"sample has a {alt}"
+
+    elif pd['RefType'] == 'p':
+        proteinInterpreter = ProteinLayman()
+        interpretation = proteinInterpreter.interpret(pd)
+        print(interpretation)
+    else:
+        raise ValueError(f"Variant reference type not recognised: {pd['RefType']}")
+
+    return interpretation
+
+
+def cli():
     # parse the inputs
     parser = argparse.ArgumentParser(description="Script to take a HGVS "
                                                  "variant and create a "
@@ -31,24 +63,9 @@ def main():
 
     args = parser.parse_args()
 
-    # Create a grammer object to parse the variant into its sections
-    grammar = Grammar()
-    # Obtain the parsed variant as a dictionary
-    pd = grammar.parse(args.variant).asDict()
+    interpretation = interpret(args.variant)
 
-    # Based on the reference type, process it either as genomic or protein
-    if pd['RefType'] == 'g' or pd['RefType'] == 'c':
-        print(f"This is a {pd['RawVar']['MutationType']} found in {pd['RefSeqAcc']} at position {pd['RawVar']['StartLoc']['PtLoc'][0]['Main']} where the reference has a {pd['RawVar']['Arg1']} and the sample has a {pd['RawVar']['Arg2']}")
-    elif pd['RefType'] == 'p':
-        proteinInterpreter = ProteinLayman()
-        interpretation = proteinInterpreter.interpret(pd)
-        print(interpretation)
-    else:
-        print("Variant reference type not recognised: "+pd['RefType'])
-
-    if not pd:
-        # Parsing went wrong.
-        print("error with parsing")
+    print(interpretation)
 
 
 if __name__ == "__main__":

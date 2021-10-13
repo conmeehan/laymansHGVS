@@ -28,7 +28,7 @@ setup(
     install_requires=['pyparsing'],
     entry_points={
         'console_scripts': [
-            'explain_HGVS = laymansHGVS.laymansHGVS:main'
+            'explain_HGVS = laymansHGVS.laymansHGVS:cli'
             ],
         },
     classifiers=[

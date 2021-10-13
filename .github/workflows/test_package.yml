@@ -37,3 +37,4 @@ jobs:
       run: |
         explain_HGVS --help
         explain_HGVS --variant "Genome1(Gene1):c.25A>G"
+        python test/test_import.py
