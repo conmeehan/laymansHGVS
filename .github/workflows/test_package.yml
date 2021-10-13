@@ -35,6 +35,5 @@ jobs:
         #    popd
     - name: Run basic tests
       run: |
-		explain_HGSV --help
+        explain_HGSV --help
         explain_HGVS --variant "Genome1(Gene1):c.25A>G"
-          
