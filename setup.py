@@ -14,7 +14,7 @@ setup(
     name='laymansHGVS',
     packages=['laymansHGVS'],
     version=version,
-    license="LGPLv3",
+    license="AGPLv3",
     description="Tool to convert HGVS variant strings into layman friendly "
                 "descriptions",
     author='Conor Meehan',
