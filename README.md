@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/fmaguire/laymansHGVS/actions/workflows/test_package.yml/badge.svg)](https://github.com/fmaguire/laymansHGVS/actions/workflows/test_package.yml)
+
 # laymansHGVS
 Program to take a [HGVS-nomenclature variant](https://varnomen.hgvs.org/) and create a laymans sentence explaining what is occurring
 
