@@ -16,5 +16,7 @@ This installs a simple command line script called `explain_HGVS` that takes a
 single argument string containing a valid HGVS formatted variant and 
 explains it.
     
-    explain_HGVS --variant "Genome1(Gene1):c.25A>G"                                                                                     >>> This is a subst found in Genome1 at position 25 where the reference has a A and the sample has a G
+    explain_HGVS --variant "Genome1(Gene1):c.25A>G"
+    >>> This is a subst found in Genome1 at position 25 where the reference has a A and the sample has a G
+
 
