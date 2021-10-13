@@ -45,7 +45,6 @@ def interpret(variant):
     elif pd['RefType'] == 'p':
         proteinInterpreter = ProteinLayman()
         interpretation = proteinInterpreter.interpret(pd)
-        print(interpretation)
     else:
         raise ValueError(f"Variant reference type not recognised: {pd['RefType']}")
 
