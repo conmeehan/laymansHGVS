@@ -1,0 +1,7 @@
+The Mutalyzer source code used in this package is copyrighted 
+by Leiden University Medical Center and
+is licensed under the `GNU Affero General Public
+License <http://www.gnu.org/licenses/agpl-3.0.html>`
+
+Therefore, this code is also distributed under a GNU Affero GPL
+
